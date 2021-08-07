@@ -1,28 +1,13 @@
-function preload() {
-}
 function setup() {
-  canvas = createCanvas(600, 500);
-  canvas.position(650, 370);
+  canvas = createCanvas(300, 300);
+  canvas.center();
   video = createCapture(VIDEO);
   video.hide();
-  classifier = ml5.imageClassifier('MobileNet', modelLoaded);
 }
+
 function draw() {
-  translate(width,0);
-  scale(-1, 1);
-  image(video, 0, 0, 600, 500);
-  classifier.classify(video, getResults);
+  image(video,0,0,300,300);
 }
-function modelLoaded() {
-  console.log("model loaded!");
-}
-function getResults(error, results) {
-  if (error) {
-    console.error(error);
-  }
-  else {
-     console.log(results);
-     document.getElementById("object_name").innerHTML = results[0].label;
-     document.getElementById("accuracy_percentage").innerHTML = results[0].confidence.toFixed(3);
-  }
-}
+
+
+
